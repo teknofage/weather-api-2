@@ -5,15 +5,20 @@ import classes from './Forecast.module.css';
 const Forecast = () => {
 
     let [city, setCity] = useState('');
+    let [mood, setMood] = useState('');
     let [unit, setUnit] = useState('imperial');
     let [responseObj, setResponseObj] = useState({});
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
 
+
 function getForecast(e) {
     e.preventDefault();
 
     if (city.length === 0) {
+        return setError(true);
+    }
+    if (mood.length === 0) {
         return setError(true);
     }
 
@@ -59,6 +64,14 @@ function getForecast(e) {
                     className={classes.textInput}
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
+                    />
+                <input
+                    type="text"
+                    placeholder="Enter Your Mood"
+                    maxLength="50"
+                    className={classes.textInput}
+                    value={mood}
+                    onChange={(e) => setMood(e.target.value)}
                     />
                 <label className={classes.Radio}>
                     <input
