@@ -26,7 +26,7 @@ router.post('/weather', function(req, res, next){
       }
 
     let country = (body.sys.country) ? body.sys.country : '' ;
-    let forecast = "For city "+city+', country '+country+' We shall celebrate your mood.';
+    let forecast = "For city "+city+', country '+country+' We shall celebrate you feeling ' + mood +".";
 
     res.render('index', {body : body, forecast: forecast});
    });
